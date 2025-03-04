@@ -1,0 +1,15 @@
+.wy-side-nav-search {
+    background-color: #00644e;
+}
+
+a[href='../../..'] {
+    color: #00644e;
+}
+
+.caption-text {
+    color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6, body {
+    font-family: "Century Gothic", sans-serif;
+}

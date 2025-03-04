@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/node-setup/linux-x64/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Node Setup - Powerfleet Automation Testing Docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Node Setup";
+        var mkdocs_page_input_path = "node-setup\\linux-x64.md";
+        var mkdocs_page_url = "/node-setup/linux-x64/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Powerfleet Automation Testing Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Web testing</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../getting-started/web-testing/selenium/">Installing Selenium</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../getting-started/web-testing/playwright-windows/">Installing Playwright</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/tutorial-1/">Tutorial 1</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/tutorial-2/">Tutorial 2</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/tutorial-3/">Tutorial 3</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/tutorial-4/">Tutorial 4</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/tutorial-5/">Tutorial 5</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/tutorial-6/">Tutorial 6</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/tutorial-7/">Tutorial 7</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/tutorial-8/">Tutorial 8</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/tutorial-9/">Tutorial 9</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/tutorial-10/">Tutorial 10</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting-started/web-testing/playwright-linux/">Installing Playwright (Linux)</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Node Setup</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#xrdp">XRDP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#environment-variables">Environment Variables</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#permissions">Permissions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#enable-d-bus">Enable D-Bus</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#launching-an-xrdp-session">Launching an XRDP Session</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#playwright">Playwright</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#jenkins">Jenkins</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#create-new-device">Create New Device</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#agent">Agent</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#references">References</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Powerfleet Automation Testing Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Advanced</li>
+      <li class="breadcrumb-item active">Node Setup</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="setting-up-ubuntu-x64-node-environment">Setting up Ubuntu (x64) Node Environment</h1>
+<h2 id="xrdp">XRDP</h2>
+<h3 id="installation">Installation</h3>
+<p>On the remote machine, execute:</p>
+<pre><code class="language-bash">sudo apt install xrdp
+</code></pre>
+<h3 id="environment-variables">Environment Variables</h3>
+<p>Modify either <code>~/.xsessionrc</code> or <code>/etc/xrdp/startwm.sh</code> (recommended) and add the following lines at the very top:</p>
+<pre><code class="language-bash">export GNOME_SHELL_SESSION_MODE=ubuntu
+export XDG_CURRENT_DESKTOP=ubuntu:GNOME
+</code></pre>
+<p>These commands assume Ubuntu with GNOME Desktop.</p>
+<p>Reboot the remote machine to apply changes.</p>
+<h3 id="permissions">Permissions</h3>
+<p>XRDP may require additional user permissions. Lack of access may lead to a blank screen. To fix this, run:</p>
+<pre><code class="language-bash">sudo adduser xrdp ssl-cert
+</code></pre>
+<p>This adds the <code>xrdp</code> user to the <code>ssl-cert</code> group for SSL certificate permissions.</p>
+<p>Reboot the remote machine to apply changes.</p>
+<h3 id="enable-d-bus">Enable D-Bus</h3>
+<p>D-Bus is essential for applications communication. To avoid issues, run:</p>
+<pre><code class="language-bash">sudo apt install dbus-x11
+dbus-launch
+</code></pre>
+<p>These commands install <code>dbus-x11</code> for XRDP and launch a new D-Bus session.</p>
+<h2 id="launching-an-xrdp-session">Launching an XRDP Session</h2>
+<p>For Windows users, use Remote Desktop Connection. Click 'Show Options' and enter the IP address and user name. Click 'Connect'.</p>
+<p>Enter the user's password and click 'Allow me to save credentials' if desired. Leave the 'Session' field unchanged.</p>
+<p>Click OK to connect. If issues arise, review the steps above.</p>
+<h2 id="playwright">Playwright</h2>
+<p>Now connected via XRDP, you can install Playwright. Use SSH instead of XRDP for installation. Connect via <code>ssh &lt;username&gt;@&lt;IP-address&gt;</code>.</p>
+<p>Follow standard Playwright installation instructions <a href="../../getting-started/web-testing/playwright-linux/">here</a>.</p>
+<h2 id="jenkins">Jenkins</h2>
+<h3 id="create-new-device">Create New Device</h3>
+<p>Create a new device on Jenkins. To make the agent script work, add <code>dsstbautomate 10.34.16.11</code> to <code>/etc/hosts</code>. This ensures Linux recognizes 'dsstbautomate' as the Jenkins site alias.</p>
+<h3 id="agent">Agent</h3>
+<!-- Agent setup instructions -->
+
+<h2 id="references">References</h2>
+<ol>
+<li>https://devicetests.com/fix-xrdp-login-blank-screen-issues</li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../getting-started/web-testing/playwright-linux/" class="btn btn-neutral float-left" title="Installing Playwright (Linux)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../getting-started/web-testing/playwright-linux/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

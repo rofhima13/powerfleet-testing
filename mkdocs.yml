@@ -1,0 +1,30 @@
+site_name: Powerfleet Automation Testing Docs
+site_url: https://example.com/
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Web testing:
+      - Installing Selenium: getting-started/web-testing/selenium.md
+      - Installing Playwright: getting-started/web-testing/playwright-windows.md
+    - Tutorials:
+      - Tutorial 1: tutorials/tutorial-1.md
+      - Tutorial 2: tutorials/tutorial-2.md
+      - Tutorial 3: tutorials/tutorial-3.md
+      - Tutorial 4: tutorials/tutorial-4.md
+      - Tutorial 5: tutorials/tutorial-5.md
+      - Tutorial 6: tutorials/tutorial-6.md
+      - Tutorial 7: tutorials/tutorial-7.md
+      - Tutorial 8: tutorials/tutorial-8.md
+      - Tutorial 9: tutorials/tutorial-9.md
+      - Tutorial 10: tutorials/tutorial-10.md
+  - Advanced:
+    - Installing Playwright (Linux): getting-started/web-testing/playwright-linux.md
+    - Node Setup: node-setup/linux-x64.md
+
+theme: readthedocs
+# plugins:
+#     - search
+#     - pdf-export
+
+extra_css:
+  - style.css
