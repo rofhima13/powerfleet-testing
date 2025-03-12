@@ -60,7 +60,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#cloning-the-playwright-repository">Cloning the Playwright Repository</a>
+    <li class="toctree-l3"><a class="reference internal" href="#cloning-a-playwright-repository">Cloning a Playwright Repository</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#installing-playwright">Installing Playwright</a>
     </li>
@@ -75,6 +75,8 @@
         </ul>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#cleaning-and-building">Cleaning and Building</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#running-a-test">Running a test</a>
     </li>
     </ul>
                 </li>
@@ -146,8 +148,13 @@
 <p>Next, you'll need a C# compatible IDE. Visual Studio Code (VS Code) is recommended. You can get the latest version from their <a href="https://code.visualstudio.com/download">website</a>, or through the Windows Package Manager (winget). To download VS Code via winget, use the command below:</p>
 <pre><code class="language-bash">winget install code
 </code></pre>
-<h2 id="cloning-the-playwright-repository">Cloning the Playwright Repository</h2>
-<p>Ensure your device has the correct authentication info to clone repositories from Azure. Clone the Playwright repository to your device and navigate to its folder through the command line.</p>
+<h2 id="cloning-a-playwright-repository">Cloning a Playwright Repository</h2>
+<p>Ensure your device has the correct authentication info to clone repositories from Azure. If not, follow the steps <a href="../azure/">here</a></p>
+<p>You have the following repositories to choose from:
+- PlaywrightRegression
+- PlaywrightV2
+- PlaywrightUnity</p>
+<p>For now, it is preferable that you clone the PlaywrightV2 repository. Clone it to your device and navigate to its folder through the command line.</p>
 <h3 id="installing-playwright">Installing Playwright</h3>
 <p>To install the latest version of Playwright, similar to installing <a href="../selenium/#chrome-chromedriver-and-nodejs">browsers</a> via Node.js, run:</p>
 <pre><code class="language-bash">$ npm init playwright@latest --yes -- --quiet --browser=chromium --browser=firefox --browser=webkit --gha
@@ -171,13 +178,15 @@ $ irm get.scoop.sh | iex
 <li>Excel Viewer</li>
 </ul>
 <h3 id="installing-an-extension">Installing an Extension</h3>
-<p>To install an extension, click on the Extensions icon ${extensions} on the left navigation bar in VS Code. Use the search bar above the navigation bar to find and install the mentioned extensions.</p>
+<p>To install an extension, click on the Extensions icon on the left navigation bar in VS Code. Use the search bar above the navigation bar to find and install the mentioned extensions.</p>
 <h2 id="cleaning-and-building">Cleaning and Building</h2>
 <p>After installing the extensions, return to your command prompt (Powershell) and enter the following commands:</p>
 <pre><code class="language-bash">dotnet clean
 dotnet build
 </code></pre>
-<p>You're now set to run Playwright tests on your device. Happy testing!</p>
+<h2 id="running-a-test">Running a test</h2>
+<p>In the Playwright repo folder, navigate to the <code>Unit Tests</code> folder, then go to <code>Individual Tests</code>. Open any C# file in this directory, then locate the <code>void</code> function in the file. There should be a Play button that you can click to run the test.
+You're now set to run Playwright tests on your device. Happy testing!</p>
               
             </div>
           </div><footer>
