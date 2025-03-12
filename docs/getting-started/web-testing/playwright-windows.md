@@ -13,8 +13,15 @@ Next, you'll need a C# compatible IDE. Visual Studio Code (VS Code) is recommend
 winget install code
 ```
 
-## Cloning the Playwright Repository
-Ensure your device has the correct authentication info to clone repositories from Azure. Clone the Playwright repository to your device and navigate to its folder through the command line.
+## Cloning a Playwright Repository
+Ensure your device has the correct authentication info to clone repositories from Azure. If not, follow the steps [here](azure.md)
+
+You have the following repositories to choose from:
+- PlaywrightRegression
+- PlaywrightV2
+- PlaywrightUnity
+
+For now, it is preferable that you clone the PlaywrightV2 repository. Clone it to your device and navigate to its folder through the command line.
 
 ### Installing Playwright
 To install the latest version of Playwright, similar to installing [browsers](./selenium.md#chrome-chromedriver-and-nodejs) via Node.js, run:
@@ -46,7 +53,7 @@ For efficient use of Playwright with VS Code, download the following extensions:
 - Excel Viewer
 
 ### Installing an Extension
-To install an extension, click on the Extensions icon ${extensions} on the left navigation bar in VS Code. Use the search bar above the navigation bar to find and install the mentioned extensions.
+To install an extension, click on the Extensions icon on the left navigation bar in VS Code. Use the search bar above the navigation bar to find and install the mentioned extensions.
 
 ## Cleaning and Building
 After installing the extensions, return to your command prompt (Powershell) and enter the following commands:
@@ -55,4 +62,6 @@ dotnet clean
 dotnet build
 ```
 
+## Running a test
+In the Playwright repo folder, navigate to the `Unit Tests` folder, then go to `Individual Tests`. Open any C# file in this directory, then locate the `void` function in the file. There should be a Play button that you can click to run the test.
 You're now set to run Playwright tests on your device. Happy testing!
