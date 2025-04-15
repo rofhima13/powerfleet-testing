@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Primary and accent colours */
+:root {
+    --md-primary-fg-color:        #00644e;
+    --md-primary-fg-color--light: #339e85;
+    --md-primary-fg-color--dark:  #004537;
+  }
+  
+/* Set the default font for body text */
+.md-typeset {
+  font-family: 'Century Gothic', sans-serif;
+}
+
+/* Keep code blocks and inline code with default monospace */
+.md-typeset code,
+.md-typeset pre,
+.md-typeset kbd,
+.md-typeset samp {
+  font-family: "IBM Plex Mono";
+}
+
+/* Override font-weight for all headings */
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4,
+.md-typeset h5,
+.md-typeset h6 {
+  font-family: "Poppins";
+  font-weight: 500;
+}
+
+header *, nav * {
+  font-family: "Poppins";
+}

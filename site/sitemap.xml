@@ -2,70 +2,106 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://example.com/</loc>
-         <lastmod>2025-03-12</lastmod>
+         <lastmod>2025-04-15</lastmod>
     </url>
     <url>
-         <loc>https://example.com/getting-started/web-testing/azure/</loc>
-         <lastmod>2025-03-12</lastmod>
+         <loc>https://example.com/debugging/debugging/</loc>
+         <lastmod>2025-04-15</lastmod>
     </url>
     <url>
-         <loc>https://example.com/getting-started/web-testing/git/</loc>
-         <lastmod>2025-03-12</lastmod>
+         <loc>https://example.com/debugging/playwright/</loc>
+         <lastmod>2025-04-15</lastmod>
+    </url>
+    <url>
+         <loc>https://example.com/debugging/selenium/</loc>
+         <lastmod>2025-04-15</lastmod>
+    </url>
+    <url>
+         <loc>https://example.com/getting-started/api-testing/pester/</loc>
+         <lastmod>2025-04-15</lastmod>
+    </url>
+    <url>
+         <loc>https://example.com/getting-started/api-testing/pytest/</loc>
+         <lastmod>2025-04-15</lastmod>
+    </url>
+    <url>
+         <loc>https://example.com/getting-started/mobile-testing/android/</loc>
+         <lastmod>2025-04-15</lastmod>
     </url>
     <url>
          <loc>https://example.com/getting-started/web-testing/playwright-linux/</loc>
-         <lastmod>2025-03-12</lastmod>
+         <lastmod>2025-04-15</lastmod>
     </url>
     <url>
          <loc>https://example.com/getting-started/web-testing/playwright-windows/</loc>
-         <lastmod>2025-03-12</lastmod>
+         <lastmod>2025-04-15</lastmod>
     </url>
     <url>
          <loc>https://example.com/getting-started/web-testing/selenium/</loc>
-         <lastmod>2025-03-12</lastmod>
+         <lastmod>2025-04-15</lastmod>
+    </url>
+    <url>
+         <loc>https://example.com/misc/azure/</loc>
+         <lastmod>2025-04-15</lastmod>
+    </url>
+    <url>
+         <loc>https://example.com/misc/environments/</loc>
+         <lastmod>2025-04-15</lastmod>
+    </url>
+    <url>
+         <loc>https://example.com/misc/git/</loc>
+         <lastmod>2025-04-15</lastmod>
     </url>
     <url>
          <loc>https://example.com/node-setup/linux-x64/</loc>
-         <lastmod>2025-03-12</lastmod>
+         <lastmod>2025-04-15</lastmod>
     </url>
     <url>
-         <loc>https://example.com/tutorials/tutorial-1/</loc>
-         <lastmod>2025-03-12</lastmod>
+         <loc>https://example.com/tutorials/web-testing/tutorial-1/</loc>
+         <lastmod>2025-04-15</lastmod>
     </url>
     <url>
-         <loc>https://example.com/tutorials/tutorial-10/</loc>
-         <lastmod>2025-03-12</lastmod>
+         <loc>https://example.com/tutorials/web-testing/tutorial-10/</loc>
+         <lastmod>2025-04-15</lastmod>
     </url>
     <url>
-         <loc>https://example.com/tutorials/tutorial-2/</loc>
-         <lastmod>2025-03-12</lastmod>
+         <loc>https://example.com/tutorials/web-testing/tutorial-2/</loc>
+         <lastmod>2025-04-15</lastmod>
     </url>
     <url>
-         <loc>https://example.com/tutorials/tutorial-3/</loc>
-         <lastmod>2025-03-12</lastmod>
+         <loc>https://example.com/tutorials/web-testing/tutorial-3/</loc>
+         <lastmod>2025-04-15</lastmod>
     </url>
     <url>
-         <loc>https://example.com/tutorials/tutorial-4/</loc>
-         <lastmod>2025-03-12</lastmod>
+         <loc>https://example.com/tutorials/web-testing/tutorial-4/</loc>
+         <lastmod>2025-04-15</lastmod>
     </url>
     <url>
-         <loc>https://example.com/tutorials/tutorial-5/</loc>
-         <lastmod>2025-03-12</lastmod>
+         <loc>https://example.com/tutorials/web-testing/tutorial-5/</loc>
+         <lastmod>2025-04-15</lastmod>
     </url>
     <url>
-         <loc>https://example.com/tutorials/tutorial-6/</loc>
-         <lastmod>2025-03-12</lastmod>
+         <loc>https://example.com/tutorials/web-testing/tutorial-6/</loc>
+         <lastmod>2025-04-15</lastmod>
     </url>
     <url>
-         <loc>https://example.com/tutorials/tutorial-7/</loc>
-         <lastmod>2025-03-12</lastmod>
+         <loc>https://example.com/tutorials/web-testing/tutorial-7/</loc>
+         <lastmod>2025-04-15</lastmod>
     </url>
     <url>
-         <loc>https://example.com/tutorials/tutorial-8/</loc>
-         <lastmod>2025-03-12</lastmod>
+         <loc>https://example.com/tutorials/web-testing/tutorial-8/</loc>
+         <lastmod>2025-04-15</lastmod>
     </url>
     <url>
-         <loc>https://example.com/tutorials/tutorial-9/</loc>
-         <lastmod>2025-03-12</lastmod>
+         <loc>https://example.com/tutorials/web-testing/tutorial-9/</loc>
+         <lastmod>2025-04-15</lastmod>
+    </url>
+    <url>
+         <loc>https://example.com/writing-tests/playwright/</loc>
+         <lastmod>2025-04-15</lastmod>
+    </url>
+    <url>
+         <loc>https://example.com/writing-tests/selenium/</loc>
+         <lastmod>2025-04-15</lastmod>
     </url>
 </urlset>

@@ -1,71 +1,128 @@
-# Getting Started with Selenium
+# Getting Started with Selenium WebDriver in Java
 
-## Dependencies
+Welcome! This guide will walk you through setting up your Windows environment to run automated web tests using Selenium WebDriver with Java and the NetBeans IDE. We'll install the necessary tools step by step.
 
-Before starting with Selenium, make sure you have the necessary dependencies installed.
+## 1. Install Java Development Kit (JDK) and NetBeans IDE
 
-### Java Development Kit (JDK) and NetBeans
+First, you need the Java environment and a place to write your code.
 
-#### OpenJDK
-Firstly, install Java Development Kit (OpenJDK) version 8.
+### OpenJDK 8
 
-- [Download OpenJDK 8](https://builds.openlogic.com/downloadJDK/openlogic-openjdk/8u422-b05/)
+The Selenium test projects in this setup require **Java 8 (OpenJDK 8)** to run correctly due to specific dependencies and compatibility.
 
-#### NetBeans
+* **Download:** Get OpenJDK 8 (select Java 8, your OS, architecture, and JDK package) from a reliable provider like OpenLogic: [Download OpenJDK 8](https://www.openlogic.com/openjdk-downloads?field_java_parent_version_target_id=416&field_operating_system_target_id=436&field_architecture_target_id=391&field_java_package_target_id=396)
+* **Install:** Extract the downloaded archive to a location like `C:\Program Files\Java\` or `D:\jdks\`. Remember the full path to the installation directory (e.g., `C:\Program Files\Java\jdk-8.0.422.05-hotspot`).
 
-The recommended IDE to use with OpenJDK 8 is NetBeans, version 18 or lower will work. You can download NetBeans 17 [here](https://archive.apache.org/dist/netbeans/netbeans-installers/17/).
+### NetBeans IDE
 
-### Chrome, ChromeDriver, and Node.js
+An Integrated Development Environment (IDE) helps you write, run, and debug code. For compatibility with Java 8, use **NetBeans version 18 or older**. This guide uses NetBeans 17.
 
-Next, you'll need to install the latest version of Chrome for Testing, along with ChromeDriver, which enables Selenium (and other web testing frameworks) to interact with Chrome.
+* **Download:** Get the installer for NetBeans 17 from the Apache archive: [Download NetBeans 17](https://archive.apache.org/dist/netbeans/netbeans-installers/17/)
+* **Install:** Run the installer using the default settings.
 
-Chrome for Testing and ChromeDriver can be installed via Node.js, which is a cross-platform runtime environment based on JavaScript.
+## 2. Install Chrome Browser, ChromeDriver, and Node.js
 
-- [Download Node.js (latest)](https://nodejs.org/en)
+Selenium controls web browsers using special programs called **WebDriver executables**. For testing with Google Chrome, you need Chrome itself and the corresponding ChromeDriver. We'll use Node.js and its package manager (npm) along with a helper tool (`@puppeteer/browsers`) to easily download and manage compatible versions.
 
-To verify Node.js installation, run these commands in Windows PowerShell:
+### Node.js (and npm)
+
+* **Download & Install Node.js:** Get the LTS (Long Term Support) version from the official site:
+  * [Download Node.js](https://nodejs.org/en)
+    Run the installer with default settings (ensure "Add to PATH" is checked).
+* **Verify Installation:** After installation, open PowerShell or Command Prompt and check the versions:
+
 ```bash
-$ node --version
-$ npm --version
+node --version
+npm --version
 ```
-You should see version numbers for Node.js and npm. If not, follow the steps [here](#setting-up-environment-variables).
 
-Once Node.js is installed, install Chrome for Testing and ChromeDriver by running these commands in PowerShell:
+If you see version numbers, Node.js and npm are ready. If not, check your system's PATH environment variable (see next section).
+
+### Install Chrome and ChromeDriver via npm
+
+Now, use npm/npx (npx runs packages without needing global install) in your terminal to install the `@puppeteer/browsers` tool and use it to download stable versions of Chrome and ChromeDriver:
+
 ```bash
-$ npm install -g @puppeteer/browsers
-$ npx @puppeteer/browsers install chromedriver@stable
-$ npx @puppeteer/browsers install chrome@stable
+# Install the browser management tool globally (optional, but can be convenient)
+npm install -g @puppeteer/browsers
+
+# Use the tool (via npx) to install the correct stable ChromeDriver
+npx @puppeteer/browsers install chromedriver@stable
+
+# Use the tool (via npx) to install the stable version of Chrome
+npx @puppeteer/browsers install chrome@stable
 ```
-This installs the most recent stable version of Chrome, ChromeDriver, and a simple browser driver through Node.js.
 
-## Setting up Environment Variables
+This ensures you get versions of Chrome and ChromeDriver that are known to work well together. Note the download location reported by the tool (you'll need it for the PATH setup).
 
-After installing OpenJDK, Chrome, and ChromeDriver, set up your environment variables. In your Windows search bar, type "path" and select "Edit system environment variables".
+## 3. Setting Up Environment Variables
 
-![Edit System Environment Variables](image.png)
+Your operating system needs to know where to find the Java JDK and the browser drivers you installed. We configure this using Environment Variables.
 
-This opens System Properties. Click "Environment Variables" in the bottom-left corner.
+### Steps to Edit Environment Variables on Windows
 
-![Environment Variables](image-1.png)
+1. In the Windows search bar, type `environment` and select **"Edit system environment variables"**.
+2. In the **System Properties** window that opens, click the **"Environment Variables..."** button near the bottom.
 
-You'll see user and system environment variables. Modify system variables for system-wide changes.
+### Add `JAVA_HOME` (System Variable)
 
-To add new system environment variables:
-1. Click "New".
-2. Specify variable name and value.
+This variable tells Java-based applications where to find the JDK.
 
-For Java installation, set variable name as *JAVA_HOME* and value to your OpenJDK 8 installation directory. Assuming default installation, it should be `C:\Program Files\OpenLogic\jdk-8.0.422.05-hotspot\`.
+1. Under the **"System Variables"** section (bottom half), click **"New..."**.
+2. For **Variable name**, enter `JAVA_HOME`.
+3. For **Variable value**, enter the full path to your OpenJDK 8 installation directory (the one you remembered from Step 1), for example:
 
-![JAVA_HOME](image-3.png)
+```text
+C:\Program Files\OpenLogic\jdk-8.0.422.05-hotspot\
+```
 
-For Chrome and ChromeDriver, move installations to a `D:\` drive. If you lack a `D:\` drive, partition your drive. [Here's](https://support.microsoft.com/en-us/windows/create-and-format-a-hard-disk-partition-bbb8e185-1bda-ecd1-3465-c9728f7d7d2e) a guide. Alternatively, use an external disk drive recognized as `D:\`.
+1. Click **OK**.
 
-Chrome should be in `D:\Chrome\chrome-win64`, and ChromeDriver in `D:\chromedriver\chromedriver-win64`.
+### Add Chrome and ChromeDriver to `Path` (User Variable)
 
-Save changes and restart your computer.
+Adding directories to the `Path` variable allows the system to find executable files (like `chromedriver.exe`) from any terminal location. It's often convenient to keep these on a `D:\` drive if you have one, but place them in a stable location.
 
-## Continue to
-- [Git](getting-started/web-testing/git.md)
-- [Azure](getting-started/web-testing/azure.md)
+* **Recommended Locations (Examples):**
+  * Chrome: `D:\Chrome\chrome-win64` (or the path reported by `@puppeteer/browsers install`)
+  * ChromeDriver: `D:\chromedriver\chromedriver-win64` (or the path reported by `@puppeteer/browsers install`)
 
-That's it! You're ready to start testing with Selenium.
+* **Steps to Add to Path:**
+    1. In the **Environment Variables** window, under the **"User variables for [YourUsername]"** section (top half), find and double-click the `Path` variable.
+    2. Click **"New"**.
+    3. Paste the full path to the directory containing `chrome.exe` (e.g., `D:\Chrome\chrome-win64`).
+    4. Click **"New"** again.
+    5. Paste the full path to the directory containing `chromedriver.exe` (e.g., `D:\chromedriver\chromedriver-win64`).
+    6. Click **OK** on all open Environment Variables / System Properties windows.
+
+* **Restart Required:** You **must restart your computer** for these environment variable changes to take full effect system-wide.
+
+## 4. Running Your First Selenium Test
+
+Before starting, ensure you are familiar with basic Git operations for cloning repositories. Refer to our [Git basics guide](../../misc/git.md) if needed.
+
+### Steps
+
+1. **Clone the Repository:** Use Git to clone the `AutomatedTests` repository from Azure DevOps onto your machine.
+2. **Open Project in NetBeans:** Launch NetBeans IDE. Go to **File > Open Project...** and navigate to and select the cloned `AutomatedTests` folder.
+3. **Locate Test Suites:** The project structure should appear in the **Projects** tab (usually on the left sidebar). Navigate through the project tree to:
+
+    *DynaMiXShakedownAutomatedTests > Test Packages > TestSuites*
+
+    ![NetBeans Project View (Illustrative)](image-5.png) *(Shows the project structure in NetBeans)*
+
+4. **Open a Test File:** Double-click any `.java` file within the `TestSuites` folder to open it in the editor.
+5. **Find a Test Method:** Scroll through the code to find a method annotated with `@Test`. These methods typically have names indicating what they test, like:
+
+```java
+@Test
+public void RunSomeNameSmokeTestTestPackChrome() {
+  // Test code inside...
+}
+```
+
+* The `@Test` annotation marks this Java method as an executable test case for the testing framework (likely TestNG or JUnit).
+
+1. **Run the Test:** Right-click directly on the **method name** (e.g., `RunSomeNameSmokeTestTestPackChrome`) in the editor.
+2. Select **"Run Focused Test Method"** from the context menu.
+
+If everything is set up correctly, a new Chrome browser window should open, and Selenium will start interacting with web pages automatically according to the test script. Congratulations – you've successfully run your first Selenium test! If errors occur, carefully review the setup steps and any error messages in the NetBeans output window.

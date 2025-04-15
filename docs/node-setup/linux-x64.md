@@ -1,71 +1,135 @@
-# Setting up Ubuntu (x64) Node Environment
+# Setting up an Ubuntu (x64) Environment for Remote Access (XRDP)
 
-## XRDP
+Welcome! This guide explains how to set up an Ubuntu Linux machine (x64) so you can connect to its graphical desktop remotely from another computer (like Windows) using XRDP (Remote Desktop Protocol). This is particularly useful for accessing testing environments or development nodes.
+
+## 1. Setting up XRDP (Remote Desktop Server)
+
+XRDP allows you to use tools like Windows Remote Desktop Connection to see and interact with the Ubuntu desktop.
 
 ### Installation
 
-On the remote machine, execute:
+* First, install the XRDP package. Open a terminal on the Ubuntu machine and run:
+
 ```bash
-sudo apt install xrdp
+sudo apt update && sudo apt install xrdp -y
 ```
 
-### Environment Variables
+*(This updates your package list and installs `xrdp`)*
 
-Modify either `~/.xsessionrc` or `/etc/xrdp/startwm.sh` (recommended) and add the following lines at the very top:
+### Environment Configuration (for GNOME Desktop)
+
+* If your Ubuntu uses the standard GNOME desktop environment, XRDP needs specific settings to display it correctly. You need to edit a startup configuration file. Editing `/etc/xrdp/startwm.sh` is recommended.
+* Open the file with root privileges using a terminal editor like `nano`:
+
+```bash
+sudo nano /etc/xrdp/startwm.sh
+```
+
+* Add the following lines at the **very beginning** of the file, before any existing commands:
+
 ```bash
 export GNOME_SHELL_SESSION_MODE=ubuntu
 export XDG_CURRENT_DESKTOP=ubuntu:GNOME
+export XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
 ```
 
-These commands assume Ubuntu with GNOME Desktop.
+*(These ensure XRDP starts the correct GNOME session)*
 
-Reboot the remote machine to apply changes.
+* Save the file (in `nano`: Ctrl+O, Enter) and exit (Ctrl+X).
+* **Reboot the Ubuntu machine** for these changes to take effect:
 
-### Permissions
+```bash
+sudo reboot
+```
 
-XRDP may require additional user permissions. Lack of access may lead to a blank screen. To fix this, run:
+### Permissions Fix (Preventing Blank Screen)
+
+* Sometimes, after connecting via XRDP, you might see only a blank screen. This is often due to permission issues related to SSL certificates used by XRDP.
+* To fix this, add the `xrdp` user (which runs the XRDP service) to the `ssl-cert` group. In the terminal, run:
+
 ```bash
 sudo adduser xrdp ssl-cert
 ```
 
-This adds the `xrdp` user to the `ssl-cert` group for SSL certificate permissions.
+* **Reboot the Ubuntu machine again** to apply the group membership change.
 
-Reboot the remote machine to apply changes.
-
-### Enable D-Bus
-
-D-Bus is essential for applications communication. To avoid issues, run:
 ```bash
-sudo apt install dbus-x11
+sudo reboot
+```
+
+### Enable D-Bus Communication
+
+* D-Bus is a system message bus that allows applications to communicate with each other. XRDP relies on it. Ensure the necessary D-Bus components are running.
+* Install the D-Bus X11 package:
+
+```bash
+sudo apt install dbus-x11 -y
+```
+
+* Ensure the D-Bus session is launched (this often happens automatically on login, but running `dbus-launch` manually in a terminal session doesn't hurt if troubleshooting):
+
+```bash
 dbus-launch
 ```
 
-These commands install `dbus-x11` for XRDP and launch a new D-Bus session.
+## 2. Connecting to the Ubuntu Machine via XRDP
 
-## Launching an XRDP Session
+Now that XRDP is configured on the Ubuntu machine, you can connect from another computer.
 
-For Windows users, use Remote Desktop Connection. Click 'Show Options' and enter the IP address and user name. Click 'Connect'.
+### From Windows
 
-Enter the user's password and click 'Allow me to save credentials' if desired. Leave the 'Session' field unchanged.
+1. Open the **Remote Desktop Connection** application (search for `mstsc.exe`).
+2. Click **"Show Options"**.
+3. In the **"Computer"** field, enter the **IP address** of the Ubuntu machine.
+4. In the **"User name"** field, enter your **Ubuntu username**.
+5. Click **"Connect"**.
+6. You'll likely see the XRDP login screen. Ensure the "Session" field is set to `Xorg` or `X11rdp`.
+7. Enter your Ubuntu user's **password**.
+8. Click **"OK"** to connect to the graphical desktop.
 
-Click OK to connect. If issues arise, review the steps above.
+If you encounter connection problems or a blank screen, carefully review the XRDP setup steps (Installation, Environment, Permissions, D-Bus) and ensure all reboots were completed.
 
-## Playwright
+## 3. Installing Playwright
 
-Now connected via XRDP, you can install Playwright. Use SSH instead of XRDP for installation. Connect via `ssh <username>@<IP-address>`.
+While you *can* use the graphical desktop via XRDP, it's generally better and more reliable to perform command-line installations like Playwright using **SSH (Secure Shell)**.
 
-Follow standard Playwright installation instructions [here](../getting-started/web-testing/playwright-linux.md).
+1. **Connect via SSH:** Open a terminal or PowerShell on your local machine and connect using:
 
-## Jenkins
+```bash
+ssh your_ubuntu_username@<IP-address_of_Ubuntu_machine>
+```
 
-### Create New Device
+(Replace placeholders with your actual username and the Ubuntu machine's IP address).
+1. **Follow Playwright Linux Setup:** Once connected via SSH, follow the standard instructions for installing Playwright and its dependencies for Linux/Ubuntu, which can be found here:
+    * [Getting Started with Playwright on Linux (Ubuntu)](../getting-started/web-testing/playwright-linux.md) (Ensure this link points to the correct guide).
 
-Create a new device on Jenkins. To make the agent script work, add `dsstbautomate 10.34.16.11` to `/etc/hosts`. This ensures Linux recognizes 'dsstbautomate' as the Jenkins site alias.
+## 4. Jenkins Agent Setup (Partial Info)
 
-### Agent
+This section relates to configuring the Ubuntu machine as a Jenkins agent node.
 
-<!-- Agent setup instructions -->
+### Create New Node in Jenkins
+
+* You will need to configure this Ubuntu machine as a new agent node within your Jenkins interface.
+
+### Hostname Resolution (`/etc/hosts`)
+
+* For the Jenkins agent script or connection process to work correctly, the Ubuntu machine needs to be able to find the Jenkins master using its hostname (e.g., `dsstbautomate`). Add an entry to the Ubuntu machine's hosts file.
+* Open the hosts file for editing:
+
+```bash
+sudo nano /etc/hosts
+```
+
+* Add a line mapping the Jenkins master's IP address to its hostname:
+
+```text
+10.34.16.11    dsstbautomate
+```
+
+*(Replace the IP address and hostname with the correct values for your Jenkins setup)*
+
+* Save the file (Ctrl+O, Enter) and exit (Ctrl+X).
 
 ## References
 
-1. https://devicetests.com/fix-xrdp-login-blank-screen-issues
+* Troubleshooting XRDP Blank Screens: [DeviceTests.com Fix](https://devicetests.com/fix-xrdp-login-blank-screen-issues)
